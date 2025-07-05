@@ -1,0 +1,30 @@
+﻿@model GudangWebApp.Models.Barang
+
+@{
+    ViewData["Title"] = "Hapus Barang";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Apakah Anda yakin ingin menghapus barang berikut?</h4>
+<div class="border p-3 mb-3">
+    <dl class="row">
+        <dt class="col-sm-3">Kode</dt>
+        <dd class="col-sm-9">@Model.KodeBarang</dd>
+
+        <dt class="col-sm-3">Nama</dt>
+        <dd class="col-sm-9">@Model.NamaBarang</dd>
+
+        <dt class="col-sm-3">Stok</dt>
+        <dd class="col-sm-9">@Model.JumlahStok</dd>
+
+        <dt class="col-sm-3">Kategori</dt>
+        <dd class="col-sm-9">@Model.Kategori</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Hapus</button>
+    <a asp-action="Index" class="btn btn-secondary">Batal</a>
+</form>

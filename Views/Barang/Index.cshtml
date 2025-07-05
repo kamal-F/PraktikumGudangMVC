@@ -1,21 +1,36 @@
-﻿@{
+﻿@model List<GudangWebApp.Models.Barang>
+
+@{
     ViewData["Title"] = "Daftar Barang";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<p>Ini adalah halaman awal untuk modul manajemen barang gudang.</p>
+<a asp-action="Create" class="btn btn-success mb-3">+ Tambah Barang</a>
 
-@model List<GudangWebApp.Models.Barang>
-<table class="table">
-    @foreach (var item in Model)
-    {
+<table class="table table-bordered">
+    <thead class="table-dark">
         <tr>
-            <td>@item.KodeBarang</td>
-            <td>@item.NamaBarang</td>
-            <td>@item.JumlahStok</td>
-            <td>@item.Kategori</td>
+            <th>Kode</th>
+            <th>Nama Barang</th>
+            <th>Stok</th>
+            <th>Kategori</th>
+            <th>Aksi</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.KodeBarang</td>
+                <td>@item.NamaBarang</td>
+                <td>@item.JumlahStok</td>
+                <td>@item.Kategori</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Hapus</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-
